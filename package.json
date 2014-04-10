@@ -1,6 +1,6 @@
 {
   "name": "fis-prepackager-css-scale",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An css parser",
   "main": "index.js",
   "scripts": {
