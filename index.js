@@ -178,7 +178,9 @@ function _process( file, ret ) {
         var info = getFileInfoByPath( pathinfo );
         var ruler, tpl;
 
-        if ( !info.file || !(ruler = hit( info.file.subpath )) || file.subpath === info.file.subpath ) {
+        if ( !info.file ||
+                !(ruler = hit( info.file.subpath )) ||
+                type === 'uri' && file.subpath === info.file.subpath ) {
             return all.replace( PLACEHOLDER_REG, pathinfo );
         }
 
