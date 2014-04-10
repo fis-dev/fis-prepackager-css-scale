@@ -23,26 +23,26 @@ CSS 缩放器
 
 * 安装npm包。
 
-```bash
-npm install -g fis-prepackager-css-scale
-```
+    ```bash
+    npm install -g fis-prepackager-css-scale
+    ```
 * 配置`fis-conf.js`，对scale.css进行条件缩放。
 
-```javascript
-// 启用此css-scale插件
-fis.config.set('modules.prepackager', fis.config.get('modules.prepackager') + ',css-scale');
+    ```javascript
+    // 启用此css-scale插件
+    fis.config.set('modules.prepackager', fis.config.get('modules.prepackager') + ',css-scale');
 
-settings: {
-        prepackager: {
-            'css-scale':
+    settings: {
+            prepackager: {
+                'css-scale':
+            }
         }
-    }
 
-fis.config.set( 'settings.prepackager.css-scale', {
-    include: /scale\.css$/i,
-    condition: '$condition'
-});
-```
+    fis.config.set( 'settings.prepackager.css-scale', {
+        include: /scale\.css$/i,
+        condition: '$condition'
+    });
+    ```
 
 ## 规则说明
 
