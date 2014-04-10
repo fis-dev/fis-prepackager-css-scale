@@ -42,7 +42,7 @@ CSS 缩放器
 ## 配置说明
 
 注意`settings.prepackager.css-scale`, 可以通过include, exclude来命中文件。
-(支持正则，glob语法)，插件针对命中的文件进行自动做缩放。
+(支持正则，glob语法)，插件针对命中的文件进行自动做缩放，另外此配置项支持数组数据，对数组里面的所有规则都进行处理。
 
 ### 命中css类文件
 
@@ -170,6 +170,25 @@ CSS 缩放器
     {%if $condition%}{%require name="test:widget/scale.tpl"%}{%else%}{%require name="test:widget/scale_0.5x.tpl"%}{%/if%}
     ...
     ```
+
+## 配置条件分支
+
+默认只会有两个`if condition `raw` else `raw(scale x 0.5)` /if`。
+如果这样已经满足你的需求了，只需要修改condition里面的变量值就ok.
+
+如果不满足，可以配置tpl, 这个时候condition配置项已经失效了。如：
+
+```html
+fis.config.set( 'settings.prepackager.css-scale', {
+    include: /scale\.css$/i,
+    tpl: '#if $retina#__placeholder__#else#__placeholder__x0.5#endif#'
+});
+```
+
+这里`__placeholder__`表示原始内容，`__placeholder__x0.5`表示将原始内容缩小了0.5倍。这个数值可以随意配置。
+
+### 如果不想条件使用，而是直接使用缩放后的资源。
+其实进不进行缩放是根据配置的tpl来的，tpl设置为`__placeholder__x0.5`, 这样所有的内容就使用缩放版本了。
 
 ## 具体细节
 
