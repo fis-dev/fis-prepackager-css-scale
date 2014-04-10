@@ -43,23 +43,8 @@ CSS 缩放器
         condition: '$condition'
     });
     ```
-* 输出
-  * 源码
 
-    ```html
-    ...
-    <link rel="stylesheet" type="text/css" href="/static/css/scale.css">
-    ...
-    ```
-  * 输出结果
-
-    ```html
-    ...
-    {%if $condition%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale.css">{%else%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale_0.5x.css">{%/if%}
-    ...
-    ```
-
-## 使用说明
+## 配置说明
 
 注意`settings.prepackager.css-scale`, 可以通过include, exclude来命中文件。
 (支持正则，glob语法)，插件针对命中的文件进行自动做缩放。
