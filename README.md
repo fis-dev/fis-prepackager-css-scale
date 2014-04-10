@@ -44,9 +44,9 @@ CSS 缩放器
 注意`settings.prepackager.css-scale`, 可以通过include, exclude来命中文件。
 (支持正则，glob语法)，插件针对命中的文件进行自动做缩放。
 
-### 命中css文件
+### 命中css类文件
 
-如果命中的是css类文件，所有对其的引用都会加上条件引入。
+如果命中的是css类文件，所有对其的引用都会加上缩放并条件引用。
 
 * link标签
   * 源码
@@ -107,6 +107,49 @@ CSS 缩放器
     {%if $condition%}{%require name="test:static/css/scale.css"%}{%else%}{%require name="test:static/css/scale_0.5x.css"%}{%/if%}
     ...
     ```
+### 命中html类文件（包括tpl文件）
+如果命中的是html类文件，此页面里面的所有内联style样式都会进行缩放，且对其的引用都会进行缩放并条件引用。
+
+源码
+
+```html
+...
+<style type="text/css">
+.ruler {
+    background: url(/static/test/images/iphone.png?xxx);
+    -webkit-background-size: 508px 899px;
+    -moz-background-size: 400px 500px;
+}
+
+.ruler {
+    background: url(/static/test/images/iphone.png);
+}</style>
+...
+```
+
+输出结果
+
+```html
+{%if $condition%}<style type="text/css">
+.ruler {
+    background: url(/static/test/images/iphone.png?xxx);
+    -webkit-background-size: 508px 899px;
+    -moz-background-size: 400px 500px;
+}
+
+.ruler {
+    background: url(/static/test/images/iphone.png);
+}</style>{%else%}<style type="text/css">
+.ruler {
+    background: url(/static/test/images/iphone_0.5x.png?xxx);
+    -moz-background-size: 400px 500px;
+}
+
+.ruler {
+    background: url(/static/test/images/iphone_0.5x.png);
+    background-size: 1017px 1798px;
+}</style>{%/if%}
+```
 
 ## 具体细节
 
