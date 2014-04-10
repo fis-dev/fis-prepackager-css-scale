@@ -43,6 +43,13 @@ CSS 缩放器
         condition: '$condition'
     });
     ```
+* 输出
+    ```html
+    <!--源码-->
+    <link rel="stylesheet" type="text/css" href="/static/css/scale.css">
+    <!--输出-->
+    {%if $condition%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale.css">{%else%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale_0.5x.css">{%/if%}
+    ```
 
 ## 规则说明
 
