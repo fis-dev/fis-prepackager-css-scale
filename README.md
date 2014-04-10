@@ -32,12 +32,7 @@ CSS 缩放器
     // 启用此css-scale插件
     fis.config.set('modules.prepackager', fis.config.get('modules.prepackager') + ',css-scale');
 
-    settings: {
-            prepackager: {
-                'css-scale':
-            }
-        }
-
+    // 配置规则
     fis.config.set( 'settings.prepackager.css-scale', {
         include: /scale\.css$/i,
         condition: '$condition'
