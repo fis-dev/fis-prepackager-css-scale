@@ -112,46 +112,63 @@ CSS 缩放器
 ### 命中html类文件（包括tpl文件）
 如果命中的是html类文件，此页面里面的所有内联style样式都会进行缩放，且对其的引用都会进行缩放并条件引用。
 
-源码
+页面的中内联样式。（也支持{%style%}格式，这里不另外给出了。）
+* 源码
 
-```html
-...
-<style type="text/css">
-.ruler {
-    background: url(/static/test/images/iphone.png?xxx);
-    -webkit-background-size: 508px 899px;
-    -moz-background-size: 400px 500px;
-}
+    ```html
+    ...
+    <style type="text/css">
+    .ruler {
+        background: url(/static/test/images/iphone.png?xxx);
+        -webkit-background-size: 508px 899px;
+        -moz-background-size: 400px 500px;
+    }
 
-.ruler {
-    background: url(/static/test/images/iphone.png);
-}</style>
-...
-```
+    .ruler {
+        background: url(/static/test/images/iphone.png);
+    }</style>
+    ...
+    ```
 
-输出结果
+* 输出结果
 
-```html
-{%if $condition%}<style type="text/css">
-.ruler {
-    background: url(/static/test/images/iphone.png?xxx);
-    -webkit-background-size: 508px 899px;
-    -moz-background-size: 400px 500px;
-}
+    ```html
+    {%if $condition%}<style type="text/css">
+    .ruler {
+        background: url(/static/test/images/iphone.png?xxx);
+        -webkit-background-size: 508px 899px;
+        -moz-background-size: 400px 500px;
+    }
 
-.ruler {
-    background: url(/static/test/images/iphone.png);
-}</style>{%else%}<style type="text/css">
-.ruler {
-    background: url(/static/test/images/iphone_0.5x.png?xxx);
-    -moz-background-size: 400px 500px;
-}
+    .ruler {
+        background: url(/static/test/images/iphone.png);
+    }</style>{%else%}<style type="text/css">
+    .ruler {
+        background: url(/static/test/images/iphone_0.5x.png?xxx);
+        -moz-background-size: 400px 500px;
+    }
 
-.ruler {
-    background: url(/static/test/images/iphone_0.5x.png);
-    background-size: 1017px 1798px;
-}</style>{%/if%}
-```
+    .ruler {
+        background: url(/static/test/images/iphone_0.5x.png);
+        background-size: 1017px 1798px;
+    }</style>{%/if%}
+    ```
+
+[require](http://fis.baidu.com/userdoc/fis/%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8#require) smarty插件对其引用部分。
+* 源码
+
+    ```html
+    ...
+    {%require name="test:widget/scale.tpl"%}
+    ...
+    ```
+* 输出结果
+
+    ```html
+    ...
+    {%if $condition%}{%require name="test:widget/scale.tpl"%}{%else%}{%require name="test:widget/scale_0.5x.tpl"%}{%/if%}
+    ...
+    ```
 
 ## 具体细节
 
