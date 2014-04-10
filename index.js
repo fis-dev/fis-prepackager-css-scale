@@ -221,12 +221,12 @@ function _process( file, ret ) {
                     value = filter.getContent();
                 }
 
-                indent = /(?:\n|(?:\r\n)|\r)(\s+)[\w\-]/m.exec( value );
-                indent = indent ? indent[1].length : 4;
-                white = '';
-                while ( indent-- ) {
-                    white += ' ';
-                }
+                // indent = /(?:\n|(?:\r\n)|\r)(\s+)[\w\-]/m.exec( value );
+                // indent = indent ? indent[1].length : 4;
+                // white = '';
+                // while ( indent-- ) {
+                //     white += ' ';
+                // }
                 white = white ? '\n' + white : '';
 
                 return white + value + white;
