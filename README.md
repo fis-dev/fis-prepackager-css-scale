@@ -44,17 +44,89 @@ CSS 缩放器
     });
     ```
 * 输出
+  * 源码
 
     ```html
-    <!--源码-->
+    ...
     <link rel="stylesheet" type="text/css" href="/static/css/scale.css">
-    <!--输出-->
+    ...
+    ```
+  * 输出结果
+
+    ```html
+    ...
     {%if $condition%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale.css">{%else%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale_0.5x.css">{%/if%}
+    ...
     ```
 
-## 规则说明
+## 使用说明
 
+注意`settings.prepackager.css-scale`, 可以通过include, exclude来命中文件。
+(支持正则，glob语法)，插件针对命中的文件进行自动做缩放。
 
+### 命中css文件
+
+如果命中的是css类文件，所有对其的引用都会加上条件引入。
+
+* link标签
+  * 源码
+
+    ```html
+    ...
+    <link rel="stylesheet" type="text/css" href="/static/css/scale.css">
+    ...
+    ```
+  * 输出结果
+
+    ```html
+    ...
+    {%if $condition%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale.css">{%else%}<link rel="stylesheet" type="text/css" href="/static/test/css/scale_0.5x.css">{%/if%}
+    ...
+    ```
+* @import规则
+  * 源码
+
+    ```html
+    ...
+    <style type="text/css">
+        @import url(/static/css/scale.css);
+
+        /*其他样式*/
+        .ruler {
+            width: auto;
+        }
+    </style>
+    ...
+    ```
+  * 输出结果
+
+    ```html
+    ...
+    <style type="text/css">
+        {%if $condition%}@import url(/static/test/css/scale.css);{%else%}@import url(/static/test/css/scale_0.5x.css);{%/if%}
+
+        /*其他样式*/
+        .ruler {
+            width: auto;
+        }
+    </style>
+    ...
+    ```
+* `require`smarty插件
+  * 源码
+
+    ```html
+    ...
+    {%require name="test:static/css/scale.css"%}
+    ...
+    ```
+  * 输出结果
+
+    ```html
+    ...
+    {%if $condition%}{%require name="test:static/css/scale.css"%}{%else%}{%require name="test:static/css/scale_0.5x.css"%}{%/if%}
+    ...
+    ```
 
 ## 具体细节
 
