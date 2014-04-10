@@ -92,7 +92,7 @@ CSS 缩放器
     </style>
     ...
     ```
-* `require`smarty插件
+* [require](http://fis.baidu.com/userdoc/fis/%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8#require)smarty插件
   * 源码
 
     ```html
