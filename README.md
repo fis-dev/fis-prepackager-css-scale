@@ -173,7 +173,7 @@ CSS 缩放器
 
 ## 配置条件分支
 
-默认只会有两个`if condition `raw` else `raw(scale x 0.5)` /if`。
+默认只会有两个分支`if condition `raw` else `raw(scale x 0.5)` /if`。
 如果这样已经满足你的需求了，只需要修改condition里面的变量值就ok.
 
 如果不满足，可以配置tpl, 这个时候condition配置项已经失效了。如：
@@ -181,7 +181,7 @@ CSS 缩放器
 ```html
 fis.config.set( 'settings.prepackager.css-scale', {
     include: /scale\.css$/i,
-    tpl: '#if $retina#__placeholder__#else#__placeholder__x0.5#endif#'
+    tpl: '#if $ios#__placeholder__#elseif $android#__placeholder__x0.75#else#__placeholder__x0.5#endif#'
 });
 ```
 
