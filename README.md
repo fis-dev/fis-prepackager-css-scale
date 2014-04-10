@@ -188,7 +188,7 @@ fis.config.set( 'settings.prepackager.css-scale', {
 这里`__placeholder__`表示原始内容，`__placeholder__x0.5`表示将原始内容缩小了0.5倍。这个数值可以随意配置。
 
 ### 如果不想条件使用，而是直接使用缩放后的资源。
-其实进不进行缩放是根据配置的tpl来的，tpl设置为`__placeholder__x0.5`, 这样所有的内容就使用缩放版本了。
+其实进不进行缩放是根据tpl来的，tpl设置为`__placeholder__x0.5`, 这样所有的内容就使用0.5缩放版本了。
 
 ## 具体细节
 
