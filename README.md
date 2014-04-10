@@ -112,7 +112,7 @@ CSS 缩放器
 ### 命中html类文件（包括tpl文件）
 如果命中的是html类文件，此页面里面的所有内联style样式都会进行缩放，且对其的引用都会进行缩放并条件引用。
 
-页面的中内联样式。（也支持{%style%}格式，这里不另外给出了。）
+**页面的中内联样式。**（也支持{%style%}格式，这里不另外给出了。）
 * 源码
 
     ```html
@@ -154,7 +154,8 @@ CSS 缩放器
     }</style>{%/if%}
     ```
 
-[require](http://fis.baidu.com/userdoc/fis/%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8#require) smarty插件对其引用部分。
+**[require](http://fis.baidu.com/userdoc/fis/%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8#require) smarty插件对其引用部分。**
+
 * 源码
 
     ```html
