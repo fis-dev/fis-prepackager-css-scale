@@ -107,6 +107,8 @@ CSS 缩放器
     {%if $condition%}{%require name="test:static/css/scale.css"%}{%else%}{%require name="test:static/css/scale_0.5x.css"%}{%/if%}
     ...
     ```
+
+
 ### 命中html类文件（包括tpl文件）
 如果命中的是html类文件，此页面里面的所有内联style样式都会进行缩放，且对其的引用都会进行缩放并条件引用。
 
