@@ -44,6 +44,7 @@ CSS 缩放器
     });
     ```
 * 输出
+
     ```html
     <!--源码-->
     <link rel="stylesheet" type="text/css" href="/static/css/scale.css">
